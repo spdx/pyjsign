@@ -1,0 +1,10 @@
+version = 1
+
+[[annotations]]
+path = [
+    "AGENTS.md",
+    "README.md",
+    ".gitignore",
+]
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "Garmin Ltd. or its subsidiaries"

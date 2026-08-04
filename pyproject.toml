@@ -1,0 +1,117 @@
+#
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: Garmin Ltd. or its subsidiaries
+#
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyjsign"
+dynamic = ["version"]
+description = "Python implementation of JSON Signature Format (JSF) and X.590 JSON Signature Schema (JSS)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = [
+    "LICENSES/Apache-2.0.txt",
+]
+authors = [
+    {name = "Joshua Watt", email = "JPEWhacker@gmail.com"}
+]
+keywords = ["json", "signature", "cryptography", "jsf", "security", "jss", "x.590"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "cryptography>=41.0.0",
+    "pycryptodome>=3.18.0",
+    "rfc8785>=0.1.2",
+    "joserfc>=1.0.0",
+    "python-jsonpath>=1.1.0",
+]
+
+[project.optional-dependencies]
+vault = [
+    "hvac>=2.0.0",
+]
+dev = [
+    "pytest>=9.0.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "reuse>=6.2.0",
+    "hvac>=2.0.0",
+    "types-hvac>=2.0.0",
+]
+docs = [
+    "sphinx>=7.0.0",
+    "furo>=2024.1.29",
+    "sphinx-autodoc-typehints>=1.25.0",
+]
+
+[project.scripts]
+pyjsign = "pyjsign.cli:main"
+pyjsf = "pyjsign.cli:main_jsf"
+pyjss = "pyjsign.cli:main_jss"
+
+[project.urls]
+Homepage = "https://github.com/spdx/pyjsign"
+Documentation = "https://github.com/spdx/pyjsign#readme"
+Repository = "https://github.com/spdx/pyjsign.git"
+"Bug Tracker" = "https://github.com/spdx/pyjsign/issues"
+
+[tool.hatchling.packages]
+packages = ["src/pyjsign"]
+
+[tool.hatch.version]
+path = "src/pyjsign/version.py"
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312", "py313", "py314"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+# Literal JSF spec Appendix A test vectors: base64 signature "value" strings
+# are inherently long and must be reproduced byte-for-byte from the spec.
+"tests/test_jsf_appendix_a_vectors.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = [
+    "--import-mode=importlib",
+    "--cov=pyjsign",
+]
+
+[tool.coverage.run]
+relative_files = true
+patch = ["subprocess"]
+branch = true
+
+[tool.coverage.html]
+directory = "htmlcov"
