@@ -64,7 +64,7 @@ jobs:
           matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11' &&
           (github.event_name == 'pull_request' ||
            (github.event_name == 'push' && github.ref == 'refs/heads/main'))
-        uses: py-cov-action/python-coverage-comment-action@2b84cfb222691291ba358a586c13606f0a9c172c # v3
+        uses: py-cov-action/python-coverage-comment-action@2136b292bfcd2a9925b36a46960fcb6f7be8e7fe # v3
         with:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Store Pull Request comment to be posted
