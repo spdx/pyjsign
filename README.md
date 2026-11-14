@@ -4,6 +4,8 @@ A Python utility to sign and verify JSON document. Implements
 [JSON Signature Format (JSF)](https://cyberphone.github.io/doc/security/jsf.html) and
 [ITU-T X.590 a.k.a. JSON Signature Schema (JSS)](https://www.itu.int/epublications/zh/publication/itu-t-x-590-2023-10-json-signature-scheme-jss/en).
 
+API Documentation is available [here](https://pyjsign.readthedocs.io/).
+
 ## Installation
 
 Install from PyPi using:
