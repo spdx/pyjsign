@@ -1,5 +1,8 @@
 # JSON Signature Format (JSF) and JSS Python Implementation
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/spdx/pyjsign/badge)](https://scorecard.dev/viewer/?uri=github.com/spdx/pyjsign)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/16705/badge)](https://www.bestpractices.dev/projects/16705)
+
 A Python utility to sign and verify JSON document. Implements
 [JSON Signature Format (JSF)](https://cyberphone.github.io/doc/security/jsf.html) and
 [ITU-T X.590 a.k.a. JSON Signature Schema (JSS)](https://www.itu.int/epublications/zh/publication/itu-t-x-590-2023-10-json-signature-scheme-jss/en).
